@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+class Shape {
+public:
+    void print_shape() {
+        cout << "____This is a shape._____" << endl;
+    }
+};
+
+class Polygon : public Shape {
+public:
+    void print_shape() {
+        cout << "___Polygon is a shape.____" << endl;
+    }
+};
+
+class Rectangle : public Polygon {
+public:
+    void print_shape() {
+        cout << "_____Rectangle is a polygon.___" << endl;
+    }
+};
+
+class Triangle : public Polygon {
+public:
+    void print_shape() {
+        cout << "____Triangle is a polygon._____" << endl;
+    }
+};
+
+class Square : public Rectangle {
+public:
+    void print_shape() {
+        cout << "____Square is a rectangle.____" << endl;
+    }
+};
+
+int main() {
+    Shape shape;
+    shape.print_shape(); 
+    
+    Polygon polygon;
+    polygon.print_shape(); 
+
+    Rectangle rectangle;
+    rectangle.print_shape(); 
+
+    Triangle triangle;
+    triangle.print_shape(); 
+
+    Square square;
+    square.print_shape(); 
+
+    return 0;
+}
