@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Employee
+ {
+public:
+    string emp_name;
+    int emp_id;
+    string address;
+    string mail_id;
+    string mobile_no;
+    double basic_pay;
+
+public:
+    Employee(string name, int id, string address, string email, string phone, double bp) {
+        emp_name = name;
+        emp_id = id;
+        address = address;
+        mail_id = email;
+        mobile_no = phone;
+        basic_pay = bp;
+    }
+
+    double calculate_gross_salary() {
+        double da = 0.97 * basic_pay;
+        double hra = 0.1 * basic_pay;
+        double pf = 0.17 * basic_pay;
+        double staff_club_fund = 0.001 * basic_pay;
+        double gross_salary = basic_pay + da + hra;
+        return gross_salary;
+    }
+
+    double calculate_net_salary() {
+        double pf = 0.17 * basic_pay;
+        double staff_club_fund = 0.001 * basic_pay;
+        double net_salary = calculate_gross_salary() - pf - staff_club_fund;
+        return net_salary;
+    }
+};
+
+class Programmer : public Employee {
+public:
+    Programmer(string name, int id, string addr, string email, string phone, double bp)
+        : Employee(name, id, address, email, phone, bp) {}
+};
+
+class AssociateProfessor : public Employee {
+public:
+    AssociateProfessor(string name, int id, string address, string email, string phone, double bp)
+        : Employee(name, id, address, email, phone, bp) {}
+};
+
+class Professor : public Employee {
+public:
+    Professor(string name, int id, string address, string email, string phone, double bp)
+        : Employee(name, id, address, email, phone, bp) {}
+};
+
+int main() {
+    Professor p("JD", 12345, "123 Main St", "J.D@email.com", "555-1234", 50000);
+    cout << "Enter the Name: " << p.emp_name << endl;
+    cout << "Enter the Employee ID: " << p.emp_id << endl;
+    cout << "Enter the Gross Salary: " << p.calculate_gross_salary() << endl;
+    cout << "Enter the Net Salary: " << p.calculate_net_salary() << endl;
+   return 0;
+}
